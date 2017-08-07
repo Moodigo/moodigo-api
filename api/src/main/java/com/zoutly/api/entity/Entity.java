@@ -5,22 +5,23 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import java.time.Instant;
 
 @Data
 @NoArgsConstructor
-@Entity
-@Table(name = "dummy")
-public class Dummy {
+public class Entity {
 
     @Id
-    @Column(nullable = false)
+    @Column(name = "id", nullable = false)
     @NonNull
     long id;
 
+    @Column(name = "created", nullable = false)
     @NonNull
-    @Column(length = 1024)
-    String value;
+    Instant created;
+
+    // TODO history or just last?
+//    Instant modified;
+//    String modifiedBy;
 }
