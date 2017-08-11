@@ -1,12 +1,12 @@
-package com.zoutly.api.dao;
+package com.zoutly.core.dao;
 
-import com.zoutly.api.entity.Dummy;
-import org.springframework.stereotype.Service;
+import com.zoutly.core.entity.Dummy;
+import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.List;
 
-@Service
+@Repository
 public class DummyDAO extends EntityDAO {
 
     public Dummy findByPK(Serializable pk) {

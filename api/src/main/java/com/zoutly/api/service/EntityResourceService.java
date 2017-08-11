@@ -2,14 +2,9 @@ package com.zoutly.api.service;
 
 import com.zoutly.api.resource.EntityListResponse;
 import com.zoutly.api.resource.EntityResponse;
+import com.zoutly.core.service.EntityService;
 
-import java.util.List;
-
-public interface EntityResourceService<E> {
-
-    E getById(long id);
-
-    List<E> getAll();
+public interface EntityResourceService<E> extends EntityService<E> {
 
     EntityListResponse<E> buildAll();
 

@@ -26,12 +26,11 @@
 
         <!-- TODO only devMode -->
         <!-- in production use validate and liquibase -->
-        <property name="hibernate.hbm2ddl.auto">update</property> <!-- generates tables -->
+        <property name="hibernate.hbm2ddl.auto">${zoutly.hibernate.mode}</property> <!-- generates tables -->
 
 
         <!-- all entity (persisted) classes are listed here -->
-        <mapping class="com.zoutly.api.entity.AppConfig"/>
-        <mapping class="com.zoutly.api.entity.Dummy"/>
+        <mapping class="com.zoutly.core.entity.Dummy"/>
 
     </session-factory>
 

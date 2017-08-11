@@ -1,9 +1,9 @@
 package com.zoutly.api.endpoint;
 
-import com.zoutly.api.entity.Dummy;
 import com.zoutly.api.resource.EntityListResponse;
 import com.zoutly.api.resource.EntityResponse;
-import com.zoutly.api.service.DummyService;
+import com.zoutly.api.service.DummyApiService;
+import com.zoutly.core.entity.Dummy;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(DummyController.URI)
 public class DummyController implements ApiInterface {
-    public static final String URI = ApiInterface.API_URI + "/dummies";
+    protected static final String URI = ApiInterface.API_URI + "/dummies";
 
     @Autowired
-    DummyService dummyService;
+    private DummyApiService dummyService;
 
     /**
      * <p>

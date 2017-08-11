@@ -1,4 +1,4 @@
-package com.zoutly.api.dao;
+package com.zoutly.core.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -9,15 +9,15 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.service.ServiceRegistry;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.List;
 
-@Service
+@Repository
 public class EntityDAO {
 
-    protected static final SessionFactory sessionFactory = buildSessionFactory();
+    private static final SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
 
@@ -47,11 +47,11 @@ public class EntityDAO {
         return null;
     }
 
-    public static SessionFactory getSessionFactory() {
+    protected static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
-    public static Session getSession() {
+    protected static Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 

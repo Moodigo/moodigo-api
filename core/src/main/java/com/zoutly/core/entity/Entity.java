@@ -1,7 +1,6 @@
-package com.zoutly.api.entity;
+package com.zoutly.core.entity;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.Column;
@@ -9,7 +8,6 @@ import javax.persistence.Id;
 import java.time.Instant;
 
 @Data
-@NoArgsConstructor
 public class Entity {
 
     @Id
@@ -21,7 +19,15 @@ public class Entity {
     @NonNull
     Instant created;
 
-    // TODO history or just last?
-//    Instant modified;
-//    String modifiedBy;
+    @Column(name = "created_by", nullable = false)
+    @NonNull
+    String createdBy;
+
+    @Column(name = "modified", nullable = false)
+    @NonNull
+    Instant modified;
+
+    @Column(name = "modified_by", nullable = false)
+    @NonNull
+    String modifiedBy;
 }
