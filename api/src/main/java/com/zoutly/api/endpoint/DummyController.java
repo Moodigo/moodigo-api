@@ -118,6 +118,4 @@ public class DummyController implements ApiInterface {
 
         return dummyService.buildById(id);
     }
-
-
 }
