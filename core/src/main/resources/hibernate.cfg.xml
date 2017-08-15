@@ -30,7 +30,8 @@
 
 
         <!-- all entity (persisted) classes are listed here -->
-        <mapping class="com.zoutly.core.entity.Dummy"/>
+        <mapping class="com.zoutly.core.model.Dummy"/>
+        <mapping class="com.zoutly.core.model.User"/>
 
     </session-factory>
 

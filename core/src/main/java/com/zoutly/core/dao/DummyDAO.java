@@ -1,6 +1,6 @@
 package com.zoutly.core.dao;
 
-import com.zoutly.core.entity.Dummy;
+import com.zoutly.core.model.Dummy;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;

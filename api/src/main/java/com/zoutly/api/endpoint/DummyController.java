@@ -3,7 +3,7 @@ package com.zoutly.api.endpoint;
 import com.zoutly.api.resource.EntityListResponse;
 import com.zoutly.api.resource.EntityResponse;
 import com.zoutly.api.service.DummyApiService;
-import com.zoutly.core.entity.Dummy;
+import com.zoutly.core.model.Dummy;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +41,7 @@ public class DummyController implements ApiInterface {
      * </p>
      */
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    public EntityResponse<Dummy> getDummy(@PathVariable(value = "id") Long id) {
+    public EntityResponse<Dummy> getDummy(@PathVariable Long id) {
         return dummyService.buildById(id);
     }
 

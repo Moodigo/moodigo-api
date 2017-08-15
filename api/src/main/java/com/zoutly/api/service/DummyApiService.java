@@ -1,6 +1,6 @@
 package com.zoutly.api.service;
 
-import com.zoutly.core.entity.Dummy;
+import com.zoutly.core.model.Dummy;
 
 public interface DummyApiService extends EntityResourceService<Dummy> {
 

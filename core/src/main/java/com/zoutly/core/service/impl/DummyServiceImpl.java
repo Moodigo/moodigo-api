@@ -1,7 +1,7 @@
 package com.zoutly.core.service.impl;
 
 import com.zoutly.core.dao.DummyDAO;
-import com.zoutly.core.entity.Dummy;
+import com.zoutly.core.model.Dummy;
 import com.zoutly.core.service.DummyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,33 +1,33 @@
-package com.zoutly.core.entity;
+package com.zoutly.core.model;
 
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.time.Instant;
 
 @Data
-public class Entity {
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class BaseEntity {
 
     @Id
     @Column(name = "id", nullable = false)
-    @NonNull
-    long id;
+    protected long id;
 
     @Column(name = "created", nullable = false)
     @NonNull
-    Instant created;
+    protected Instant created;
 
     @Column(name = "created_by", nullable = false)
     @NonNull
-    String createdBy;
+    protected String createdBy;
 
     @Column(name = "modified", nullable = false)
     @NonNull
-    Instant modified;
+    protected Instant modified;
 
     @Column(name = "modified_by", nullable = false)
     @NonNull
-    String modifiedBy;
+    protected String modifiedBy;
 }
