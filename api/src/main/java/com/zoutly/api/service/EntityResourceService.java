@@ -2,13 +2,18 @@ package com.zoutly.api.service;
 
 import com.zoutly.api.resource.EntityListResponse;
 import com.zoutly.api.resource.EntityResponse;
+import com.zoutly.core.model.BaseEntity;
 import com.zoutly.core.service.EntityService;
 
-public interface EntityResourceService<E> extends EntityService<E> {
+public interface EntityResourceService<E extends BaseEntity> extends EntityService<E> {
 
-    EntityListResponse<E> buildAll();
+    default EntityListResponse<E> buildAll() {
+        return new EntityListResponse<>(getAll());
+    }
 
-    EntityResponse<E> buildById(long id);
+    default EntityResponse<E> buildById(long id) {
+        return new EntityResponse<>(getById(id));
+    }
 
     // TODO
 //    EntityResponse<E> convertEntityToData(E entity);

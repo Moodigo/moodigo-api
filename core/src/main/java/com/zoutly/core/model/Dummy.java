@@ -13,12 +13,14 @@ import javax.persistence.*;
 @Entity(name = "dummy")
 @Table(name = "dummy",
         indexes = {@Index(columnList = "dummy_id", name = "dummy_idx", unique = true)})
-@SequenceGenerator(name = "id_sequence", sequenceName = "dummy_seq", allocationSize = 1)
-public class Dummy {
+public class Dummy extends BaseEntity {
+
+    private static final long serialVersionUID = -1219284328957406785L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_sequence")
-    @Column(name = "dummy_id", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_sequence")
+    @SequenceGenerator(name = "id_sequence", sequenceName = "dummy_seq", allocationSize = 1)
+    @Column(name = "dummy_id", unique = true, nullable = false, updatable = false)
     private long id;
 
     @NonNull

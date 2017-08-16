@@ -1,33 +1,48 @@
 package com.zoutly.core.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 import java.time.Instant;
 
-@Data
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BaseEntity {
+@Getter
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
+abstract public class BaseEntity implements Serializable {
 
-    @Id
-    @Column(name = "id", nullable = false)
-    protected long id;
+    private static final long serialVersionUID = 4993247878775240224L;
+
+//    @Id
+//    @Column(name = "id", nullable = false)
+//    protected long id;
 
     @Column(name = "created", nullable = false)
-    @NonNull
     protected Instant created;
 
     @Column(name = "created_by", nullable = false)
-    @NonNull
-    protected String createdBy;
+    protected long createdBy;
 
     @Column(name = "modified", nullable = false)
-    @NonNull
     protected Instant modified;
 
     @Column(name = "modified_by", nullable = false)
-    @NonNull
-    protected String modifiedBy;
+    protected long modifiedBy;
+
+    public void setModification(User user) {
+        long userId = user != null ? user.getId() : 0L; // 0L for SYSTEM
+        Instant now = Instant.now();
+
+        if(this.getCreated() == null) {
+            this.created = now;
+            this.createdBy = userId;
+        }
+        this.modified = now;
+        this.modifiedBy = userId;
+    }
 }

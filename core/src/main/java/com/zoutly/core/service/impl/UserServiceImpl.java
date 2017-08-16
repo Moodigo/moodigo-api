@@ -1,27 +1,18 @@
 package com.zoutly.core.service.impl;
 
 import com.zoutly.core.dao.UserDAO;
-import com.zoutly.core.model.User;
 import com.zoutly.core.service.UserService;
+import lombok.Getter;
+import lombok.experimental.Accessors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
+    @Getter
+    @Accessors(prefix = "user")
     protected UserDAO userDAO;
-
-    @Override
-    public List<User> getAll() {
-        return userDAO.findAll();
-    }
-
-    @Override
-    public User getById(long id) {
-        return userDAO.findByPK(id);
-    }
 
 }

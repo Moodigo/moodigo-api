@@ -14,11 +14,13 @@ import javax.persistence.*;
 @Table(name = "user_table", // user is reserved keyword
         indexes = {@Index(columnList = "user_id", name = "user_idx", unique = true)})
 @SequenceGenerator(name = "id_sequence", sequenceName = "user_seq", allocationSize = 1)
-public class User {
+public class User extends BaseEntity {
+
+    private static final long serialVersionUID = -174549311311970885L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_sequence")
-    @Column(name = "user_id", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "id_sequence")
+    @Column(name = "user_id", unique = true, nullable = false, updatable = false)
     private long id;
 
     @NonNull

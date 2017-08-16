@@ -1,7 +1,7 @@
 package com.zoutly.datagen.entitygen;
 
+import com.zoutly.core.dao.BaseDAO;
 import com.zoutly.core.dao.DummyDAO;
-import com.zoutly.core.dao.EntityDAO;
 import com.zoutly.core.dao.UserDAO;
 import com.zoutly.core.model.Dummy;
 import com.zoutly.core.model.User;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class EntityGen implements CommandLineRunner {
 
     @Autowired
-    private EntityDAO entityDAO;
+    private BaseDAO baseDAO;
 
     @Autowired
     private DummyDAO dummyDAO;
@@ -22,13 +22,13 @@ public class EntityGen implements CommandLineRunner {
     @Autowired
     private UserDAO userDAO;
 
-
     private DataFactory df = new DataFactory();
 
     public void run(String... args) throws Exception {
 
         generateDummies(args);
         generateUsers(args);
+        modifyDummies(args);
 
         System.exit(0);
     }
@@ -36,14 +36,25 @@ public class EntityGen implements CommandLineRunner {
     private void generateDummies(String... args) {
         for(int i = 0; i < 100; i++) {
             Dummy d = new Dummy(df.getRandomWord());
-            entityDAO.save(d);
+            baseDAO.save(d, null);
         }
     }
 
     private void generateUsers(String... args) {
-        for(int i = 0; i < 10000; i++) {
+        for(int i = 0; i < 1000; i++) {
             User u = new User(df.getFirstName(), df.getLastName());
-            userDAO.save(u);
+            userDAO.save(u, null);
+        }
+    }
+
+    private void modifyDummies(String... arg) {
+
+        for(long i = 1; i <= 50; i++) {
+            Dummy d = dummyDAO.findByPK(i);
+            User u = userDAO.findByPK(51 - i);
+
+            d.setValue(df.getRandomWord());
+            dummyDAO.save(d, u);
         }
     }
 
