@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(UserController.URI)
-public class UserController implements ApiInterface {
-    protected static final String URI = ApiInterface.API_URI + "/users";
+@RequestMapping("/users")
+public class UserController {
 
     @Autowired
     UserApiService userService;

@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.*;
  * Example Controller. Should cover useful techniques of Spring Controllers.
  */
 @RestController
-@RequestMapping(DummyController.URI)
-public class DummyController implements ApiInterface {
-    protected static final String URI = ApiInterface.API_URI + "/dummies";
+@RequestMapping("/dummies")
+public class DummyController {
 
     @Autowired
     private DummyApiService dummyService;
